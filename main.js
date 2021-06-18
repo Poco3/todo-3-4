@@ -76,22 +76,15 @@ const displayTodos = (array) => {
     tr.appendChild(th);
     changeStatus(tr, el);
     changeDelete(tr, list);
-
-    
-     
   })
   num = 0
     
-  
-
 };
 
 output.addEventListener('click', ()=>{
 addTask();
-
-
-
-})
+changeBtn();
+});
 
 
 
@@ -101,16 +94,13 @@ const changeBtn = () =>{
   if(allbtn.checked){
     return displayTodos(todos); 
 } else if(donebtn.checked){
-  const test1 = todos.filter((element) =>
+  const donetodo = todos.filter((element) =>
   element.status === '完了'
   )
-  return displayTodos(test1);
+  displayTodos(donetodo);
 } else if(workbtn.checked){
-  const test2 = todos.fill((element) => {
+  const worktodo = todos.filter((element) => 
      element.status === '作業中'
-  })
-  return displayTodos(test2);
+  )
+    displayTodos(worktodo);
 }};
-
-
-

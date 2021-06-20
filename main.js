@@ -16,7 +16,9 @@ const workbtn = document.getElementById('workbtn');
 
 //関数addTask
 const addTask = () => {
+  const todonumber = todos.length;
   const todo = {
+    todonumber,
     comment: '',
     status: '作業中'
   };
@@ -67,8 +69,8 @@ const displayTodos = (array) => {
      })
     const tr = document.createElement('tr');
     const list = document.createElement('td');
-    list.textContent = num;
-    num++
+    list.textContent = el.todonumber;
+    
     const th = document.createElement('td');
     th.textContent = el.comment;
     table.appendChild(tr);
@@ -77,8 +79,7 @@ const displayTodos = (array) => {
     changeStatus(tr, el);
     changeDelete(tr, list);
   })
-  num = 0
-    
+
 };
 
 output.addEventListener('click', ()=>{
@@ -86,9 +87,17 @@ addTask();
 changeBtn();
 });
 
+allbtn.addEventListener('click', ()=>{
+  changeBtn();
+})
 
+donebtn.addEventListener('click',()=>{
+  changeBtn();
+})
 
-
+workbtn.addEventListener('click', ()=>{
+  changeBtn();
+})
 
 const changeBtn = () =>{
   if(allbtn.checked){
@@ -104,3 +113,6 @@ const changeBtn = () =>{
   )
     displayTodos(worktodo);
 }};
+
+
+
